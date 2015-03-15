@@ -25,8 +25,16 @@
             android:label="@string/title_activity_drawing_canvas" >
         </activity>
         <activity
+            android:name=".Categories"
+            android:label="@string/title_activity_lessons" >
+        </activity>
+        <activity
             android:name=".Lessons"
             android:label="@string/title_activity_lessons" >
+        </activity>
+        <activity
+            android:name=".Flashcards"
+            android:label="@string/title_activity_flashcards" >
         </activity>
     </application>
 

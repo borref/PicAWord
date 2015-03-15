@@ -124,7 +124,6 @@ public class DrawingView extends View {
         invalidate();
         paintColor = Color.parseColor(newColor);
         if(newColor != "#FFFFFFFF") lastPaintColor = paintColor;
-        Log.v("COLOR", "Color " + lastPaintColor + " saved");
         drawPaint.setColor(paintColor);
     }
 
