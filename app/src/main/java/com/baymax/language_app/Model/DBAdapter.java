@@ -105,17 +105,25 @@ public class DBAdapter {
         while(cursor.moveToNext()){
             int cid = cursor.getInt(0);
             int cif = cursor.getInt(1);
-            int com = cursor.getInt(2);
+            String com = cursor.getString(2);
             String src = cursor.getString(3);
             information.add(cid + " " + cif + " " + com + " " + src + "\n");
         }
         return information;
     }
 
+    public int UpdateComplete(String oldvalue, String value){
+        SQLiteDatabase db = helper.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(DBHelper.COMPLETE, value);
+        String[] whereArgs = {oldvalue};
+        int count = db.update(DBHelper.TABLE_WORD, cv, DBHelper.COMPLETE + " =? ", whereArgs);
+        return count;
+    }
 
     static class DBHelper extends SQLiteOpenHelper{
 
-        private static final int DATABASE_VERSION = 6;
+        private static final int DATABASE_VERSION = 7;
         private static final String DATABASE_NAME = "PicaWord";
 
         //---------------------------LEVEL TABLE--------------------------------
@@ -147,7 +155,7 @@ public class DBAdapter {
         private static final String ID_LT = "id_let";
         private static final String COMPLETE = "complete";
         private static final String SRC_WORD = "src";
-        private static final String CREATE_TABLE_WORD = "CREATE TABLE " + TABLE_WORD + " ("+ID_WORD+" INTEGER PRIMARY KEY AUTOINCREMENT, "+ID_LT+" INTEGER, "+COMPLETE+" INTEGER, "+SRC_WORD+" VARCHAR(50), FOREIGN KEY("+ID_LT+") REFERENCES "+TABLE_LESSON+"(_id));";
+        private static final String CREATE_TABLE_WORD = "CREATE TABLE " + TABLE_WORD + " ("+ID_WORD+" INTEGER PRIMARY KEY AUTOINCREMENT, "+ID_LT+" INTEGER, "+COMPLETE+" VARCHAR(50), "+SRC_WORD+" VARCHAR(50), FOREIGN KEY("+ID_LT+") REFERENCES "+TABLE_LESSON+"(_id));";
         //----------------------------WORD TABLE--------------------------------
 
         private static final String DROP_TABLE_LEVEL = "DROP TABLE IF EXISTS " + TABLE_LEVEL;
