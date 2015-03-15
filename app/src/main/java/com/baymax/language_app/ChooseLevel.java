@@ -7,13 +7,20 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.baymax.language_app.Model.DBAdapter;
+
 
 public class ChooseLevel extends ActionBarActivity {
+
+    DBAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_level);
+
+        adapter = new DBAdapter(this);
+
     }
 
 

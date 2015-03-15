@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import com.baymax.language_app.Message;
 
+import java.util.ArrayList;
+
 public class DBAdapter {
 
     DBHelper helper;
@@ -42,32 +44,78 @@ public class DBAdapter {
         return id;
     }
 
-    public long insertDataWord(int id_fk, String src){
+    public long insertDataWord(int id_fk, int complete, String src){
         SQLiteDatabase db = helper.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(DBHelper.ID_LT, id_fk);
+        cv.put(DBHelper.COMPLETE, complete);
         cv.put(DBHelper.SRC_WORD, src);
         long id = db.insert(DBHelper.TABLE_WORD, null, cv);
         return id;
     }
 
-    public String getAllDataLevel(){
+    public ArrayList<String> getAllDataLevel(){
         SQLiteDatabase db = helper.getWritableDatabase();
         String[] columns = {DBHelper.ID_LEVEL,DBHelper.SRC_LEVEL};
         Cursor cursor = db.query(DBHelper.TABLE_LEVEL, columns, null, null, null, null, null);
-        StringBuffer sb = new StringBuffer();
+        ArrayList<String> information = new ArrayList<String>();
+        while(cursor.moveToNext()){
+            int index1 = cursor.getColumnIndex(DBHelper.ID_LEVEL);
+            int index2 = cursor.getColumnIndex(DBHelper.SRC_LEVEL);
+            int id = cursor.getInt(0);
+            String src = cursor.getString(1);
+            information.add(id + " " + src + "\n");
+        }
+        return information;
+    }
+
+    public ArrayList<String> getAllDataCategory(){
+        SQLiteDatabase db = helper.getWritableDatabase();
+        String[] columns = {DBHelper.ID_CATEGORY, DBHelper.ID_LET, DBHelper.SRC_CATEGORY};
+        Cursor cursor = db.query(DBHelper.TABLE_CATEGORY, columns, null, null, null, null, null);
+        ArrayList<String> information = new ArrayList<String>();
         while(cursor.moveToNext()){
             int cid = cursor.getInt(0);
-            String src = cursor.getString(1);
-            sb.append(cid + " " + src + "\n");
+            int cif = cursor.getInt(1);
+            String src = cursor.getString(2);
+            information.add(cid + " " + cif + " " + src + "\n");
         }
-        return sb.toString();
+        return information;
+    }
+
+    public ArrayList<String> getAllDataLesson(){
+        SQLiteDatabase db = helper.getWritableDatabase();
+        String[] columns = {DBHelper.ID_LESSON, DBHelper.ID_CT, DBHelper.SRC_LESSON};
+        Cursor cursor = db.query(DBHelper.TABLE_LESSON, columns, null, null, null, null, null);
+        ArrayList<String> information = new ArrayList<String>();
+        while(cursor.moveToNext()){
+            int cid = cursor.getInt(0);
+            int cif = cursor.getInt(1);
+            String src = cursor.getString(2);
+            information.add(cid + " " + cif + " " + src + "\n");
+        }
+        return information;
+    }
+
+    public ArrayList<String> getAllDataWord(){
+        SQLiteDatabase db = helper.getWritableDatabase();
+        String[] columns = {DBHelper.ID_WORD, DBHelper.ID_LT, DBHelper.COMPLETE, DBHelper.SRC_WORD};
+        Cursor cursor = db.query(DBHelper.TABLE_WORD, columns, null, null, null, null, null);
+        ArrayList<String> information = new ArrayList<String>();
+        while(cursor.moveToNext()){
+            int cid = cursor.getInt(0);
+            int cif = cursor.getInt(1);
+            int com = cursor.getInt(2);
+            String src = cursor.getString(3);
+            information.add(cid + " " + cif + " " + com + " " + src + "\n");
+        }
+        return information;
     }
 
 
     static class DBHelper extends SQLiteOpenHelper{
 
-        private static final int DATABASE_VERSION = 5;
+        private static final int DATABASE_VERSION = 6;
         private static final String DATABASE_NAME = "PicaWord";
 
         //---------------------------LEVEL TABLE--------------------------------
