@@ -6,13 +6,20 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.baymax.language_app.Model.DBAdapter;
+
 
 public class MainActivity extends ActionBarActivity {
+
+    DBAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        adapter = new DBAdapter(this);
+
     }
 
 
