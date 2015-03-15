@@ -12,42 +12,12 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 
 
-public class Lessons extends FragmentActivity {
-
-    ViewPager pager = null;
-    MyFragmentPageAdapter pagerAdapter;
+public class Lessons extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lessons);
-
-        this.setContentView(R.layout.activity_flashcards);
-
-        this.pager = (ViewPager) this.findViewById(R.id.pager);
-
-        MyFragmentPageAdapter adapter = new MyFragmentPageAdapter(getSupportFragmentManager());
-        adapter.addFragment(ScreenSlidePageFragment.newInstance(getResources()
-                .getColor(R.color.material_blue_grey_800), 0));
-        adapter.addFragment(ScreenSlidePageFragment.newInstance(getResources()
-                .getColor(R.color.material_blue_grey_950), 1));
-        adapter.addFragment(ScreenSlidePageFragment.newInstance(getResources()
-                .getColor(R.color.material_deep_teal_500), 2));
-        adapter.addFragment(ScreenSlidePageFragment.newInstance(getResources()
-                .getColor(R.color.material_blue_grey_900), 3));
-        adapter.addFragment(ScreenSlidePageFragment.newInstance(getResources()
-                .getColor(R.color.material_blue_grey_900), 4));
-        this.pager.setAdapter(adapter);
-    }
-
-    @Override
-    public void onBackPressed() {
-
-        // Return to previous page when we press back button
-        if (this.pager.getCurrentItem() == 0)
-            super.onBackPressed();
-        else
-            this.pager.setCurrentItem(this.pager.getCurrentItem() - 1);
 
     }
 

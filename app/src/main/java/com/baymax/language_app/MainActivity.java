@@ -26,15 +26,15 @@ public class MainActivity extends Activity {
 
         if(adapter.getAllDataLevel().size() == 0){
             adapter.insertDataLevel("hola");
-            Message.message(this, "estoy vacio");
+            //Message.message(this, "estoy vacio");
         }else{
-            Message.message(this, "estoy con info");
+            //Message.message(this, "estoy con info");
         }
 
         ArrayList<String> data = adapter.getAllDataLevel();
 
         for (int i = 0; i < data.size(); i++) {
-            Message.message(this, data.get(i));
+            //Message.message(this, data.get(i));
         }
     }
 

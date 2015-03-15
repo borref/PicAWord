@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class ScreenSlidePageFragment extends Fragment {
@@ -15,8 +16,11 @@ public class ScreenSlidePageFragment extends Fragment {
 
     private int color;
     private int index;
+    private int[] flashcards = {R.drawable.card_uno, R.drawable.card_dos, R.drawable.card_tres, R.drawable.card_cuatro};
 
     public static ScreenSlidePageFragment newInstance(int color, int index) {
+
+
 
         // Instantiate a new fragment
         ScreenSlidePageFragment fragment = new ScreenSlidePageFragment();
@@ -51,12 +55,15 @@ public class ScreenSlidePageFragment extends Fragment {
         ViewGroup rootView = (ViewGroup) inflater.inflate(
                 R.layout.fragment_slide_flashcard, container, false);
 
+        ImageView imageView = (ImageView)rootView.findViewById(R.id.image_container);
+        imageView.setBackgroundResource(flashcards[this.index]);
+
         // Show the current page index in the view
-        TextView tvIndex = (TextView) rootView.findViewById(R.id.tvIndex);
-        tvIndex.setText(String.valueOf(this.index));
+        //TextView tvIndex = (TextView) rootView.findViewById(R.id.tvIndex);
+        //tvIndex.setText(String.valueOf(this.index));
 
         // Change the background color
-        rootView.setBackgroundColor(this.color);
+        //rootView.setBackgroundColor(this.color);
 
         return rootView;
 

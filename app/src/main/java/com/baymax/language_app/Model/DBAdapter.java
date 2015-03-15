@@ -168,13 +168,13 @@ public class DBAdapter {
         public DBHelper(Context context) {
             super(context, DATABASE_NAME, null, DATABASE_VERSION);
             this.context = context;
-            Message.message(context, "en constructor");
+            //Message.message(context, "en constructor");
         }
 
         @Override
         public void onCreate(SQLiteDatabase db) {
             try {
-                Message.message(context, "en create");
+                //Message.message(context, "en create");
                 db.execSQL(CREATE_TABLE_LEVEL);
                 db.execSQL(CREATE_TABLE_CATEGORY);
                 db.execSQL(CREATE_TABLE_LESSON);
@@ -191,7 +191,7 @@ public class DBAdapter {
                 db.execSQL(DROP_TABLE_CATEGORY);
                 db.execSQL(DROP_TABLE_LESSON);
                 db.execSQL(DROP_TABLE_WORD);
-                Message.message(context, "en upgrade");
+                //Message.message(context, "en upgrade");
                 onCreate(db);
             }catch (Exception e) {
                 Message.message(context, "" + e);

@@ -7,6 +7,13 @@
     android:screenOrientation="portrait"
     tools:context=".MainActivity">
 
+    <ImageView
+        android:layout_gravity="center"
+        android:layout_width="75dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/roast_time"/>
+
     <!-- Buttons -->
     <LinearLayout
         android:layout_width="wrap_content"
