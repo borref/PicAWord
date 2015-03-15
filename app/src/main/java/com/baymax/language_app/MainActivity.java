@@ -24,8 +24,14 @@ public class MainActivity extends Activity {
 
         adapter = new DBAdapter(this);
 
+        if(adapter.getAllDataLevel().size() == 0){
+            adapter.insertDataLevel("hola");
+            Message.message(this, "estoy vacio");
+        }else{
+            Message.message(this, "estoy con info");
+        }
 
-        ArrayList<String> data = adapter.getAllDataWord();
+        ArrayList<String> data = adapter.getAllDataLevel();
 
         for (int i = 0; i < data.size(); i++) {
             Message.message(this, data.get(i));
