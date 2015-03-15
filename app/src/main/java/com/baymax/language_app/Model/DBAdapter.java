@@ -80,8 +80,9 @@ public class DBAdapter {
         //----------------------------WORD TABLE--------------------------------
         private static final String TABLE_WORD = "Word";
         private static final String ID_LT = "id_let";
+        private static final String COMPLETE = "complete";
         private static final String SRC_WORD = "src";
-        private static final String CREATE_TABLE_WORD = "CREATE TABLE " + TABLE_WORD + " (_id INTEGER PRIMARY KEY AUTOINCREMENT, "+ID_LT+" INTEGER, "+SRC_WORD+" VARCHAR(50), FOREIGN KEY("+ID_LT+") REFERENCES "+TABLE_LESSON+"(_id));";
+        private static final String CREATE_TABLE_WORD = "CREATE TABLE " + TABLE_WORD + " (_id INTEGER PRIMARY KEY AUTOINCREMENT, "+ID_LT+" INTEGER, "+COMPLETE+" INTEGER, "+SRC_WORD+" VARCHAR(50), FOREIGN KEY("+ID_LT+") REFERENCES "+TABLE_LESSON+"(_id));";
         //----------------------------WORD TABLE--------------------------------
 
         private static final String DROP_TABLE_LEVEL = "DROP TABLE IF EXISTS " + TABLE_LEVEL;
