@@ -15,28 +15,43 @@ public class DBAdapter {
         helper = new DBHelper(context);
     }
 
-    public void insertDataLevel(){
+    public long insertDataLevel(String src){
+        SQLiteDatabase db = helper.getWritableDatabase();
         ContentValues cv = new ContentValues();
-
+        cv.put(DBHelper.SRC_LEVEL, src);
+        long id = db.insert(DBHelper.TABLE_LEVEL, null, cv);
+        return id;
     }
 
-    public void insertDataCategory(){
+    public long insertDataCategory(int id_fk, String src){
+        SQLiteDatabase db = helper.getWritableDatabase();
         ContentValues cv = new ContentValues();
-
+        cv.put(DBHelper.ID_LET, id_fk);
+        cv.put(DBHelper.SRC_CATEGORY, src);
+        long id = db.insert(DBHelper.TABLE_CATEGORY, null, cv);
+        return id;
     }
 
-    public void insertDataLesson(){
+    public long insertDataLesson(int id_fk, String src){
+        SQLiteDatabase db = helper.getWritableDatabase();
         ContentValues cv = new ContentValues();
-
+        cv.put(DBHelper.ID_CT, id_fk);
+        cv.put(DBHelper.SRC_LESSON, src);
+        long id = db.insert(DBHelper.TABLE_LESSON, null, cv);
+        return id;
     }
 
-    public void insertDataWord(){
+    public long insertDataWord(int id_fk, String src){
+        SQLiteDatabase db = helper.getWritableDatabase();
         ContentValues cv = new ContentValues();
-
+        cv.put(DBHelper.ID_LT, id_fk);
+        cv.put(DBHelper.SRC_WORD, src);
+        long id = db.insert(DBHelper.TABLE_WORD, null, cv);
+        return id;
     }
 
 
-    class DBHelper extends SQLiteOpenHelper{
+    static class DBHelper extends SQLiteOpenHelper{
 
         private static final int DATABASE_VERSION = 5;
         private static final String DATABASE_NAME = "PicaWord";
@@ -49,30 +64,30 @@ public class DBAdapter {
         //---------------------------LEVEL TABLE--------------------------------
 
         //------------------------CATEGORY TABLE--------------------------------
-        private static final String TABLES_CATEGORY = "Category";
+        private static final String TABLE_CATEGORY = "Category";
         private static final String ID_LET = "id_let";
         private static final String SRC_CATEGORY = "src";
-        private static final String CREATE_TABLE_CATEGORY = "CREATE TABLE " + TABLES_CATEGORY + " (_id INTEGER PRIMARY KEY AUTOINCREMENT, "+ID_LET+" INTEGER, "+SRC_CATEGORY+" VARCHAR(50), FOREIGN KEY("+ID_LET+") REFERENCES "+TABLE_LEVEL+"(_id));";
+        private static final String CREATE_TABLE_CATEGORY = "CREATE TABLE " + TABLE_CATEGORY + " (_id INTEGER PRIMARY KEY AUTOINCREMENT, "+ID_LET+" INTEGER, "+SRC_CATEGORY+" VARCHAR(50), FOREIGN KEY("+ID_LET+") REFERENCES "+TABLE_LEVEL+"(_id));";
         //------------------------CATEGORY TABLE--------------------------------
 
         //--------------------------LESSON TABLE--------------------------------
-        private static final String TABLES_LESSON = "Lesson";
+        private static final String TABLE_LESSON = "Lesson";
         private static final String ID_CT = "id_let";
         private static final String SRC_LESSON = "src";
-        private static final String CREATE_TABLE_LESSON = "CREATE TABLE " + TABLES_LESSON + " (_id INTEGER PRIMARY KEY AUTOINCREMENT, "+ID_CT+" INTEGER, "+SRC_LESSON+" VARCHAR(50), FOREIGN KEY("+ID_CT+") REFERENCES "+TABLES_CATEGORY+"(_id));";
+        private static final String CREATE_TABLE_LESSON = "CREATE TABLE " + TABLE_LESSON + " (_id INTEGER PRIMARY KEY AUTOINCREMENT, "+ID_CT+" INTEGER, "+SRC_LESSON+" VARCHAR(50), FOREIGN KEY("+ID_CT+") REFERENCES "+TABLE_CATEGORY+"(_id));";
         //--------------------------LESSON TABLE--------------------------------
 
         //----------------------------WORD TABLE--------------------------------
-        private static final String TABLES_WORD = "Word";
+        private static final String TABLE_WORD = "Word";
         private static final String ID_LT = "id_let";
         private static final String SRC_WORD = "src";
-        private static final String CREATE_TABLE_WORD = "CREATE TABLE " + TABLES_WORD + " (_id INTEGER PRIMARY KEY AUTOINCREMENT, "+ID_LT+" INTEGER, "+SRC_WORD+" VARCHAR(50), FOREIGN KEY("+ID_LT+") REFERENCES "+TABLES_LESSON+"(_id));";
+        private static final String CREATE_TABLE_WORD = "CREATE TABLE " + TABLE_WORD + " (_id INTEGER PRIMARY KEY AUTOINCREMENT, "+ID_LT+" INTEGER, "+SRC_WORD+" VARCHAR(50), FOREIGN KEY("+ID_LT+") REFERENCES "+TABLE_LESSON+"(_id));";
         //----------------------------WORD TABLE--------------------------------
 
         private static final String DROP_TABLE_LEVEL = "DROP TABLE IF EXISTS " + TABLE_LEVEL;
-        private static final String DROP_TABLE_CATEGORY =  "DROP TABLE IF EXISTS " + TABLES_CATEGORY;
-        private static final String DROP_TABLE_LESSON =  "DROP TABLE IF EXISTS " + TABLES_LESSON;
-        private static final String DROP_TABLE_WORD =  "DROP TABLE IF EXISTS " + TABLES_WORD;
+        private static final String DROP_TABLE_CATEGORY =  "DROP TABLE IF EXISTS " + TABLE_CATEGORY;
+        private static final String DROP_TABLE_LESSON =  "DROP TABLE IF EXISTS " + TABLE_LESSON;
+        private static final String DROP_TABLE_WORD =  "DROP TABLE IF EXISTS " + TABLE_WORD;
 
         private Context context;
 
