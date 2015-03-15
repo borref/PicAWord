@@ -5,6 +5,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.baymax.language_app.Model.DBAdapter;
 
@@ -45,7 +46,7 @@ public class MainActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void nextActivity(){
+    public void nextActivity(View view){
         startActivity(new Intent(this, ChooseLevel.class));
         finish();
     }

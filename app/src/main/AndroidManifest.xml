@@ -20,6 +20,14 @@
             android:name=".ChooseLevel"
             android:label="@string/title_activity_choose_level" >
         </activity>
+        <activity
+            android:name=".DrawingCanvas"
+            android:label="@string/title_activity_drawing_canvas" >
+        </activity>
+        <activity
+            android:name=".Lessons"
+            android:label="@string/title_activity_lessons" >
+        </activity>
     </application>
 
 </manifest>
