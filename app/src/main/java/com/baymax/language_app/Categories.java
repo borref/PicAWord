@@ -17,6 +17,6 @@ public class Categories extends Activity {
     }
 
     public void goLessons(View view){
-        startActivity(new Intent(this, Categories.class));
+        startActivity(new Intent(this, Lessons.class));
     }
 }
