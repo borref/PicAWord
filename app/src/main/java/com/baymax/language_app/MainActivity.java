@@ -10,6 +10,8 @@ import android.view.View;
 
 import com.baymax.language_app.Model.DBAdapter;
 
+import java.util.ArrayList;
+
 
 public class MainActivity extends Activity {
 
@@ -22,6 +24,12 @@ public class MainActivity extends Activity {
 
         adapter = new DBAdapter(this);
 
+
+        ArrayList<String> data = adapter.getAllDataWord();
+
+        for (int i = 0; i < data.size(); i++) {
+            Message.message(this, data.get(i));
+        }
     }
 
     public void nextActivity(View view){
