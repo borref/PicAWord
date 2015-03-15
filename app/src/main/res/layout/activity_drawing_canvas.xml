@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFCCCCCC"
+    android:background="#7BBA51"
     android:orientation="vertical"
     android:screenOrientation="portrait"
     tools:context=".MainActivity">
@@ -17,34 +17,42 @@
         <!-- New file -->
         <ImageButton
             android:id="@+id/new_button"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
+            android:layout_marginTop="8dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:contentDescription="@string/start_new"
-            android:src="@drawable/new_file" />
+            android:layout_marginRight="5dp"
+            android:background="@drawable/new_file" />
 
         <!-- Brush -->
         <ImageButton
             android:id="@+id/draw_button"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:contentDescription="@string/brush"
-            android:src="@drawable/brush" />
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/brush" />
 
         <!-- Erase -->
         <ImageButton
             android:id="@+id/erase_button"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:contentDescription="@string/erase"
-            android:src="@drawable/eraser" />
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/eraser" />
 
         <!-- Save -->
         <ImageButton
             android:id="@+id/save_button"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:contentDescription="@string/save"
-            android:src="@drawable/save" />
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="5dp"
+            android:background = "@drawable/save" />
     </LinearLayout>
 
     <!-- Brush chooser -->
@@ -87,14 +95,6 @@
 
     </LinearLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Here is the place of the word"
-        android:textStyle="bold"
-        android:textSize="20sp"/>
-
     <!-- Canvas -->
 
     <com.andres.drawingapp.DrawingView
@@ -102,8 +102,6 @@
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_marginBottom="3dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
         android:layout_marginTop="3dp"
         android:layout_weight="1"
         android:background="#FFFFFFFF" />
